@@ -24,7 +24,7 @@ sleep 5
     sleep 15
 echo "--> Set root password for Mysql sever "
 expect -f - <<-EOF
-  set timeout 10
+  set timeout 3
   spawn mysql_secure_installation
   expect "Would you like to setup VALIDATE PASSWORD plugin?"
   send -- "N\r"
@@ -42,3 +42,9 @@ expect -f - <<-EOF
   send -- "y\r"
   expect eof
 EOF
+
+mysql -u root -p$DB_ROOT
+use mysql;
+update user set plugin='mysql_native_password' where user='root';
+flush privileges; 
+quit;
