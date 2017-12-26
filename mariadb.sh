@@ -26,10 +26,12 @@ sleep 5
     sleep 15
 echo "--> Set root password for Mysql sever "
 expect -f - <<-EOF
-  set timeout 8
+  set timeout 2
   spawn mysql_secure_installation
-  expect "Would you like to setup VALIDATE PASSWORD plugin?"
-  send -- "N\r"
+  expect "Enter current password for root (enter for none):"
+  send -- "\r"
+  expect "Change the root password?"
+  send -- "Y\r"
   expect "New password:"
   send -- "$DB_ROOT\r"
   expect "Re-enter new password:"
