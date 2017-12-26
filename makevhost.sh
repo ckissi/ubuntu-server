@@ -17,6 +17,14 @@ server {
     root /home/$domain/public;
     index index.html index.htm index.php;
     server_name $domain;
+    
+    #ssl_certificate /etc/nginx/ssl/myweb.com/276900/server.crt;
+    #ssl_certificate_key /etc/nginx/ssl/myweb.com/276900/server.key;
+    
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+    
     location / {
         try_files $uri $uri/ /index.php$is_args$args;
     }
