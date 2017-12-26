@@ -10,6 +10,9 @@ mkdir /home/$domain/public
 
 chown -R www-data:www-data /home/$domain
 
+touch /home/$domain/public/index.html
+echo "$domain" > /home/$domain/public/index.html
+
 touch /etc/nginx/sites-available/$domain
 echo "
 server {
