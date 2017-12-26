@@ -8,6 +8,8 @@ mkdir /home/$domain/logs
 #mkdir /home/$domain/cgi-bin
 mkdir /home/$domain/public
 
+chown -R www-data:www-data /home/$domain
+
 touch /etc/nginx/sites-available/$domain
 echo '
 server {
