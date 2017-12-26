@@ -1,12 +1,8 @@
 #!/bin/bash
 scriptPath=$PWD
 
-#apt-get update
-#apt-get -y install nginx 
-
-#apt-get -y install php-fpm
-#apt-get -y install php-mysql
-#apt-get -y install php
+#remove apache2
+sudo apt-get remove apache2*
 
 # add php7 and nginx repos
 sudo add-apt-repository -y ppa:nginx/development
