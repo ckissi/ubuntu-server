@@ -1,6 +1,8 @@
 #!/bin/bash
-# Settings for MariaDB
 
+export LC_ALL="en_US.UTF-8"
+
+# Settings for MariaDB
 DB_ROOT=`</dev/urandom tr -dc '1234567890!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB'| (head -c $1 > /dev/null 2>&1 || head -c 15)`
 DB_NAME=`</dev/urandom tr -dc a-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 8)`
 DB_USER=`</dev/urandom tr -dc a-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 8)`
