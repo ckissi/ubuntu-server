@@ -11,7 +11,7 @@ mkdir /home/$domain/public
 chown -R www-data:www-data /home/$domain
 
 touch /etc/nginx/sites-available/$domain
-echo '
+echo "
 server {
     listen 80;
     root /home/$domain/public;
@@ -25,7 +25,7 @@ server {
        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
     }
 }
-' > /etc/nginx/sites-available/$domain
+" > /etc/nginx/sites-available/$domain
 
 # enable vhost
 nginx_ensite $domain
