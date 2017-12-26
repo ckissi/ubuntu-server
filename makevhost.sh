@@ -3,6 +3,9 @@ echo "Please enter domain name: "
 read domain
 #echo "You entered: $domain"
 
+#remove old config
+rm -f /etc/nginx/sites-available/$domain
+
 mkdir /home/$domain
 mkdir /home/$domain/logs
 #mkdir /home/$domain/cgi-bin
