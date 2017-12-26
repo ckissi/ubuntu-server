@@ -33,4 +33,4 @@ echo "Installing MariaDB"
 /bin/bash $scriptPath/mariadb.sh
 
 # remove unneeded packages 
-sudo apt autoremove
+sudo apt -y autoremove
