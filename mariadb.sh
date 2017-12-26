@@ -26,7 +26,7 @@ sleep 5
     sleep 15
 echo "--> Set root password for Mysql sever "
 expect -f - <<-EOF
-  set timeout 2
+  set timeout 1
   spawn mysql_secure_installation
   expect "Enter current password for root (enter for none):"
   send -- "\r"
