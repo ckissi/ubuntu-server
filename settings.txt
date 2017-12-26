@@ -1,0 +1,5 @@
+# Mysql setting
+MYSQL root password =DB_ROOT  
+mysql database name=DB_NAME   
+mysql username =DB_USER   
+mysql username password =DB_PASSWORD 
