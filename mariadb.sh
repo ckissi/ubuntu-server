@@ -3,7 +3,7 @@
 export LC_ALL="en_US.UTF-8"
 
 # Settings for MariaDB
-DB_ROOT=`</dev/urandom tr -dc '1234567890!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB'| (head -c $1 > /dev/null 2>&1 || head -c 15)`
+DB_ROOT=`</dev/urandom tr -dc '1234567890qwertQWERTasdfgASDFGzxcvbZXCVB'| (head -c $1 > /dev/null 2>&1 || head -c 15)`
 DB_NAME=`</dev/urandom tr -dc a-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 8)`
 DB_USER=`</dev/urandom tr -dc a-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 8)`
 DB_PASSWORD=`</dev/urandom tr -dc A-Za-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 10)`
@@ -45,7 +45,7 @@ expect -f - <<-EOF
   expect eof
 EOF
 
-mysql -u root -p$DB_ROOT <<EOF
+mysql --u="root" --password="$DB_ROOT" <<EOF
 use mysql
 update user set plugin='mysql_native_password' where user='root'
 flush privileges
