@@ -11,7 +11,15 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 sudo apt-get update
 
 # install basics
-sudo apt-get install -y git tmux vim curl wget zip unzip htop
+sudo apt-get install -y git tmux vim curl wget zip unzip htop make
+
+# install nginx_ensite
+cd
+git clone https://github.com/perusio/nginx_ensite.git
+cd nginx_ensite
+sudo make install
+
+cd $scriptPath
 
 # Nginx
 echo "Installing Nginx"
