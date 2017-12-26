@@ -31,3 +31,6 @@ php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-d
 #MariaDB
 echo "Installing MariaDB"
 /bin/bash $scriptPath/mariadb.sh
+
+# remove unneeded packages 
+sudo apt autoremove
