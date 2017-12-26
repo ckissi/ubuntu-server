@@ -16,7 +16,7 @@ CONFIG_DIR=$PWD
     sed -i "s/DB_PORT/$DB_PORT/g" $CONFIG_DIR/settings.txt
 
 sudo apt-get update
-sudo apt-get install mariadb-server mariadb-client
+sudo apt-get install -y mariadb-server mariadb-client
 
 echo "Securing MariaDB... "
 sleep 5
