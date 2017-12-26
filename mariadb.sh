@@ -43,7 +43,7 @@ expect -f - <<-EOF
   expect eof
 EOF
 
-mysql -u root -p$DB_ROOT
+mysql -u root -p$DB_ROOT;
 use mysql;
 update user set plugin='mysql_native_password' where user='root';
 flush privileges; 
