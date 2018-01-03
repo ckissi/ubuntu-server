@@ -1,6 +1,10 @@
 #!/bin/bash
 scriptPath=$PWD
 
+# Make Swap (512MB) 
+echo "Installing MariaDB"
+/bin/bash $scriptPath/makeswap.sh
+
 #remove apache2
 sudo apt-get remove apache2*
 
