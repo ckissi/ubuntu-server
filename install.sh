@@ -2,8 +2,16 @@
 scriptPath=$PWD
 
 # Make Swap (512MB) 
-echo "Installing MariaDB"
-/bin/bash $scriptPath/makeswap.sh
+echo -n "Create Swap (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+   echo "Creating Swap..."
+   /bin/bash $scriptPath/makeswap.sh
+   echo "Swap Done..."
+else
+    echo "Swap skipped"
+fi
+
 
 #remove apache2
 sudo apt-get remove apache2*
@@ -30,15 +38,34 @@ echo "Installing Nginx"
 sudo apt-get install -y nginx
 
 # PHP
-echo "Installing PHP 7.1"
-sudo apt-get install -y php7.1-fpm php7.1-cli php7.1-mcrypt php7.1-gd php7.1-mysql php7.1-pgsql php7.1-imap php-memcached php7.1-mbstring php7.1-xml php7.1-curl php7.1-bcmath php7.1-sqlite3 php7.1-xdebug
+echo -n "Install PHOP 7.1 (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    echo "Installing PHP 7.1"
+    sudo apt-get install -y php7.1-fpm php7.1-cli php7.1-mcrypt php7.1-gd php7.1-mysql php7.1-pgsql php7.1-imap php-memcached php7.1-mbstring php7.1-xml php7.1-curl php7.1-bcmath php7.1-sqlite3 php7.1-xdebug
+else
+    echo "PHP 7.1 skipped"
+fi
 
-sudo apt-get install -y php5.6-fpm php5.6-cli php5.6-mcrypt php5.6-gd php5.6-mysql php5.6-xml php5.6-curl php5.6-mbstring
+echo -n "Install PHP 5.6 (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    echo "Installing PHP 5.6"
+    sudo apt-get install -y php5.6-fpm php5.6-cli php5.6-mcrypt php5.6-gd php5.6-mysql php5.6-xml php5.6-curl php5.6-mbstring
+else
+    echo "PHP 5.6 skipped"
+fi
 
 # Composer
-echo "Installing Composer"
-php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-dir=/usr/bin/ --filename=composer
-
+echo -n "Install Composer (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    echo "Installing Composer"
+    php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-dir=/usr/bin/ --filename=composer
+else
+    echo "Composer skipped"
+fi    
+    
 
 #MariaDB
 echo "Installing MariaDB"
