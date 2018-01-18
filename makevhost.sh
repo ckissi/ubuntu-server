@@ -17,29 +17,38 @@ touch /home/$domain/public/index.html
 echo "$domain" > /home/$domain/public/index.html
 
 touch /etc/nginx/sites-available/$domain
-echo "
+#echo "
+cat > /etc/nginx/sites-available/$domain <<EOF
+# Redirect non-www to www
+server {
+        server_name $domain;
+        return 301 \$scheme://www.$domain\$request_uri;
+}
+
 server {
     listen 80;
     root /home/$domain/public;
     index index.html index.htm index.php;
     server_name $domain;
-    
+
+    # Enter SSL certificates here
     #ssl_certificate /etc/nginx/ssl/myweb.com/276900/server.crt;
     #ssl_certificate_key /etc/nginx/ssl/myweb.com/276900/server.key;
-    
+
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
-    
+
     location / {
-        try_files $uri $uri/ /index.php$is_args$args;
+        try_files \$uri \$uri/ /index.php$is_args$args;
     }
     location ~ \.php$ {
        include snippets/fastcgi-php.conf;
-       fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+       fastcgi_pass unix:/run/php/php7.1-fpm.sock;
     }
 }
-" > /etc/nginx/sites-available/$domain
+EOF
+#" > /etc/nginx/sites-available/$domain
 
 # enable vhost
 nginx_ensite $domain
