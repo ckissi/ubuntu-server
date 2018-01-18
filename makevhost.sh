@@ -45,6 +45,7 @@ server {
     location ~ \.php$ {
        include snippets/fastcgi-php.conf;
        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+      #fastcgi_pass unix:/run/php/php5.6-fpm.sock; 
     }
 }
 EOF
