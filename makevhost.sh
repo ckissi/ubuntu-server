@@ -29,7 +29,7 @@ server {
     listen 80;
     root /home/$domain/public;
     index index.html index.htm index.php;
-    server_name $domain;
+    server_name www.$domain;
 
     # Enter SSL certificates here
     #ssl_certificate /etc/nginx/ssl/myweb.com/276900/server.crt;
@@ -45,7 +45,6 @@ server {
     location ~ \.php$ {
        include snippets/fastcgi-php.conf;
        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
-      #fastcgi_pass unix:/run/php/php5.6-fpm.sock; 
     }
 }
 EOF
@@ -55,4 +54,4 @@ EOF
 nginx_ensite $domain
 
 #reload nginx
-service nginx reload
+sudo nginx -t && sudo service nginx reload
