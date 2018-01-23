@@ -84,6 +84,11 @@ echo "Installing MariaDB"
 /bin/bash $scriptPath/mariadb.sh
 
 #Install Redis
+#CACHE_DRIVER=redis
+#SESSION_DRIVER=redis
+#REDIS_HOST=127.0.0.1
+#REDIS_PASSWORD=null
+#REDIS_PORT=6379
 echo -n "Install Redis (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
