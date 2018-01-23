@@ -12,6 +12,18 @@ else
     echo "Swap skipped"
 fi
 
+# install certbot
+echo -n "Install Certbot (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+  sudo apt-get update
+  sudo apt-get install -y software-properties-common
+  sudo add-apt-repository ppa:certbot/certbot
+  sudo apt-get update
+  sudo apt-get install -y python-certbot-nginx 
+else
+    echo "Certbot skipped"
+fi
 
 #remove apache2
 sudo apt-get remove apache2*
@@ -38,7 +50,7 @@ echo "Installing Nginx"
 sudo apt-get install -y nginx
 
 # PHP
-echo -n "Install PHOP 7.1 (y/n)? "
+echo -n "Install PHP 7.1 (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     echo "Installing PHP 7.1"
