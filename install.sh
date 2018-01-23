@@ -83,5 +83,16 @@ fi
 echo "Installing MariaDB"
 /bin/bash $scriptPath/mariadb.sh
 
+#Install Redis
+echo -n "Install Redis (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    sudo add-apt-repository -y ppa:chris-lea/redis-server
+    sudo apt-get update
+    sudo apt-get install -y redis-server
+else
+    echo "Redis skipped"
+fi    
+
 # remove unneeded packages 
 sudo apt -y autoremove
