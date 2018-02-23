@@ -2,6 +2,11 @@
 
 export LC_ALL="en_US.UTF-8"
 
+#update to 10.2
+sudo apt-get install software-properties-common
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+sudo sh -c "echo 'deb [arch=amd64,i386] https://mirrors.evowise.com/mariadb/repo/10.2/ubuntu '$(lsb_release -cs)' main' > /etc/apt/sources.list.d/MariaDB-10.2.list"
+
 # Settings for MariaDB
 DB_ROOT=`</dev/urandom tr -dc '1234567890qwertQWERTasdfgASDFGzxcvbZXCVB'| (head -c $1 > /dev/null 2>&1 || head -c 15)`
 DB_NAME=`</dev/urandom tr -dc a-z0-9| (head -c $1 > /dev/null 2>&1 || head -c 8)`
