@@ -1,6 +1,9 @@
 #!/bin/bash
 scriptPath=$PWD
 
+#set locale
+export LC_ALL="en_US.UTF-8"
+
 #update server
 apt-get -y update && apt-get -y upgrade
 
