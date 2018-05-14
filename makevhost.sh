@@ -40,7 +40,7 @@ server {
     add_header X-Content-Type-Options "nosniff";
 
     location / {
-        try_files \$uri \$uri/ /index.php$is_args$args;
+        try_files \$uri \$uri/ /index.php\$is_args\$args;
     }
     location ~ \.php$ {
        include snippets/fastcgi-php.conf;
