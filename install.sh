@@ -1,6 +1,9 @@
 #!/bin/bash
 scriptPath=$PWD
 
+#update server
+apt-get update && apt-get upgrade
+
 # Make Swap (512MB) 
 echo -n "Create Swap (y/n)? "
 read answer
