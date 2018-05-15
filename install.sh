@@ -3,6 +3,9 @@ scriptPath=$PWD
 
 #set locale
 export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+echo 'LANGUAGE="en_US.UTF-8"' >> /etc/default/locale
+echo 'LC_ALL="en_US.UTF-8"' >> /etc/default/locale
 
 #update server
 apt-get -y update && apt-get -y upgrade
