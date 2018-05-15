@@ -63,7 +63,7 @@ echo -n "Install PHP 7.1 (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     echo "Installing PHP 7.1"
-    sudo apt-get install -y php7.1-fpm php7.1-cli php7.1-mcrypt php7.1-gd php7.1-mysql php7.1-pgsql php7.1-imap php-memcached php7.1-mbstring php7.1-xml php7.1-curl php7.1-bcmath php7.1-sqlite3 php7.1-xdebug
+    sudo apt-get install -y php7.1-fpm php7.1-cli php7.1-mcrypt php7.1-zip php7.1-gd php7.1-mysql php7.1-pgsql php7.1-imap php-memcached php7.1-mbstring php7.1-xml php7.1-curl php7.1-bcmath php7.1-sqlite3 php7.1-xdebug
 else
     echo "PHP 7.1 skipped"
 fi
@@ -72,7 +72,7 @@ echo -n "Install PHP 5.6 (y/n)? "
 read answer
 if echo "$answer" | grep -iq "^y" ;then
     echo "Installing PHP 5.6"
-    sudo apt-get install -y php5.6-fpm php5.6-cli php5.6-mcrypt php5.6-gd php5.6-mysql php5.6-xml php5.6-curl php5.6-mbstring
+    sudo apt-get install -y php5.6-fpm php5.6-cli php5.6-mcrypt php5.6-zip php5.6-gd php5.6-mysql php5.6-xml php5.6-curl php5.6-mbstring
 else
     echo "PHP 5.6 skipped"
 fi
